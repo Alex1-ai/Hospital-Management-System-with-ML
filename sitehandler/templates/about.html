@@ -1,0 +1,150 @@
+{% include 'include.html' %}
+{% include 'navbar.html' %}
+{%load static %}
+{% block body %}
+
+
+  
+      <!-- ======= About Us Section ======= -->
+      <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="section-title">
+            <h2>About Us</h2>
+            <p>The main motive of this website is to provide a relaible service to our users with guranteed privacy. This website holds the detials of the patient to book their appointment with the doctors and can view their previous appointments, prescriptions,
+                reports etc.</p>
+          </div>
+  
+    
+        </div>
+      </section><!-- End About Us Section -->
+
+   
+
+      <section id="services" class="services services">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="section-title">
+            <h2>Services</h2>
+            <p>Our services gives patients the opportunity to view the doctors of their specialisation, so that they can book an appointment with the respective doctor of their intrest. The doctor can view all the details of the appointments so that he can gives the prescirption for the patients.</p>
+          </div>
+  
+          <div class="row">
+            <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
+              <div class="icon"><i class="fas fa-heartbeat"></i></div>
+              <h4 class="title"><a href="">Cardiothoracic Surgery</a></h4>
+              <p class="description">This deals with illnesses of the heart, lungs, oesophagus and chest.These include: cardiac surgery (heart and great vessels), thoracic surgery (organs within the thorax, excluding the heart), transplantation and heart failure surgery, oesophageal surgery and congenital surgery in adults and children</p>
+            </div>
+            <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
+              <div class="icon"><i class="fas fa-pills"></i></div>
+              <h4 class="title"><a href="">General Surgery</a></h4>
+              <p class="description">This deals with illness with breast, colorectal, endocrine, upper and lower gastrointestinal (GI), transplant (of kidney, liver, pancreas) and vascular.</p>
+            </div>
+            <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
+              <div class="icon"><i class="fas fa-hospital-user"></i></div>
+              <h4 class="title"><a href="">Neurosurgery </a></h4>
+              <p class="description">Involves the brain, central nervous system and spinal cord. It covers all aspects of brain surgery, from pre-operative imaging to removal of tumours. You may focus on: paediatric neurosurgery, neuro-oncology (treating cancer of the brain), functional neurosurgery (surgical management of a wide range of neurological problems)</p>
+            </div>
+            <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
+              <div class="icon"><i class="fas fa-dna"></i></div>
+              <h4 class="title"><a href="">Plastic Surgery</a></h4>
+              <p class="description">Involves the restoration of normal form and function; 80% of all plastic surgery is reconstructive. Urgent and emergency work may include: hand trauma, burns and scalds, and soft tissue injuries involving face, trunk or limbs.</p>
+            </div>
+            <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
+              <div class="icon"><i class="fas fa-wheelchair"></i></div>
+              <h4 class="title"><a href="">Trauma and Orthopaedic Surgery</a></h4>
+              <p class="description">Works on bones, joints and their associated soft tissues, including ligaments, nerves and muscles. Trauma work involves fractures and other injuries.</p>
+            </div>
+            <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
+              <div class="icon"><i class="fas fa-notes-medical"></i></div>
+              <h4 class="title"><a href="">Urology Surgery</a></h4>
+              <p class="description">Deals with the urogenital system: kidney, bladder and urinary problems, as well as men’s sexual and reproductive health.</p>
+            </div>
+          </div>
+  
+        </div>
+      </section><!-- End Services Section -->
+
+      <div>
+        <br>
+    </div>
+    <footer class="navbar navbar-dark navbar-expand-md sticky-bottom bg-arsh">
+    
+    
+    
+        <!-- Footer Links -->
+        <div class="container-fluid text-center text-md-left">
+          <footer class="footer-area bg-f">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <h3>About Us</h3>
+                        <p>The main motive of this website is to provide a relaible service to our users with guranteed privacy. This website holds the detials of the patient to book their appointment with the doctors. <a href=about.html>see more details</a></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h3>Opening hours</h3>
+                        <p><span class="text-color">Mon-Tue: </span>10:Am - 9pm</p>
+                        <p><span class="text-color">Wed-Thu :</span> 10:Am - 9PM</p>
+                        <p><span class="text-color">Fri-Sat :</span> 10:Am - 9PM</p>
+                        <p><span class="text-color">Sunday :</span> Closed</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h3>Contact information</h3>
+                        <p class="lead">Dansoman Street, Wiseley Grammar, Accra, Ghana, +233238559158</p>
+                        <p class="lead"><a href="#">+233-23855-9158</a></p>
+                        <p><a href="#"> hospitalmanagement@gmail.com</a></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h3>Subscribe</h3>
+                        <div class="subscribe_form">
+                            <form class="subscribe_form">
+                              {% csrf_token %}
+                              <div>
+                                <input name="EMAIL" id="subs-email" class="form_input" placeholder="Email Address..."
+                                       type="email">
+                              </div>
+                            
+                              <div>
+                                <button type="submit" class="submit bg-primary" style="color:white; margin-top:5px; border-radius: 0.5em; border:none;">SUBSCRIBE</button>
+                              </div>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                        <ul class="list-inline f-social">
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li class="list-inline-item"><a href=""><i class="fa fa-linkedin" aria-hidden="false"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                            </li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p class="company-name">All Rights Reserved. &copy; 2022 <a href="#">Hospital Management System</a>
+                                Programmed By : Team Hero
+    
+        
+        </footer>
+
+
+
+        <style>
+
+            .bg-arsh{
+                background-color:#0a0909;
+                color:white;
+              }
+        </style>
+
+      
+
+      
+ 
+  
+{% endblock  %}

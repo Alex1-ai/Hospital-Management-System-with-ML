@@ -1,0 +1,454 @@
+{% include 'include.html' %}
+{% include 'navbar.html' %}
+{% block body %}
+{% load static %}
+
+
+
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <!-- <img class="d-block w-100" src="..." alt="First slide"> -->
+      <div class="hero-section" style="background-image: url('{% static 'img/bg3.jpg' %}'); background-repeat: no-repeat; height: 600px; position: relative; overflow: hidden;">
+        <div class="jumbotron text-center" style="background-color: rgba(0, 0, 0, 0.8); width: 75%; margin: auto; position: absolute; top: calc(50% + 30px); left: 50%; transform: translate(-50%, -50%);">
+          <!-- Content inside the Jumbotron -->
+          <h2 class="text-light">Book your consultation with your doctor anywhere!</h2>
+          <p class="text-light">This appliation allows you to book an appointment with the respective doctor whom you want to consult </p>
+          <a class="btn btn-outline-primary" href="{% url 'createaccountpage' %}" role="button">Create Account</a>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <!-- <img class="d-block w-100" src="..." alt="Second slide"> -->
+      <div class="hero-section" style="background-image: url('{% static 'img/bg5.jpg' %}'); background-repeat: no-repeat; height: 600px; position: relative; overflow: hidden;">
+        <div class="jumbotron text-center" style="background-color: rgba(0, 0, 0, 0.8); width: 75%; margin: auto; position: absolute; top: calc(50% + 30px); left: 50%; transform: translate(-50%, -50%);">
+          <!-- Content inside the Jumbotron -->
+          <h2 class="text-light">Book your consultation with your doctor anywhere!</h2>
+          <p class="text-light">This appliation allows you to book an appointment with the respective doctor whom you want to consult </p>
+          <a class="btn btn-outline-primary" href="{% url 'createaccountpage' %}" role="button">Create Account</a>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <!-- <img class="d-block w-100" src="..." alt="Third slide"> -->
+      <div class="hero-section" style="background-image: url('{% static 'img/bg2.jpg' %}'); background-repeat: no-repeat; height: 600px; position: relative; overflow: hidden;">
+        <div class="jumbotron text-center" style="background-color: rgba(0, 0, 0, 0.8); width: 75%; margin: auto; position: absolute; top: calc(50% + 30px); left: 50%; transform: translate(-50%, -50%);">
+          <!-- Content inside the Jumbotron -->
+          <h2 class="text-light">Book your consultation with your doctor anywhere!</h2>
+          <p class="text-light">This appliation allows you to book an appointment with the respective doctor whom you want to consult </p>
+          <a class="btn btn-outline-primary" href="{% url 'createaccountpage' %}" role="button">Create Account</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <!-- <img class="d-block w-100" src="..." alt="Second slide"> -->
+      <div class="hero-section" style="background-image: url('{% static 'img/bg4.jpg' %}'); background-repeat: no-repeat; height: 600px; position: relative; overflow: hidden;">
+        <div class="jumbotron text-center" style="background-color: rgba(0, 0, 0, 0.8); width: 75%; margin: auto; position: absolute; top: calc(50% + 30px); left: 50%; transform: translate(-50%, -50%);">
+          <!-- Content inside the Jumbotron -->
+          <h2 class="text-light">Book your consultation with your doctor anywhere!</h2>
+          <p class="text-light">This appliation allows you to book an appointment with the respective doctor whom you want to consult </p>
+          <a class="btn btn-outline-primary" href="{% url 'createaccountpage' %}" role="button">Create Account</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+
+<!-- <section> -->
+  <!-- <img src="{% static 'img/slide-1.jpg' %}" alt="Snow" style="width:100%; height:auto;"> -->
+  <!-- <div class="container1">
+    
+  <div class='centered content'>
+    <h2>Book your consultation with your doctor anywhere!</h2>
+    <h4>create an account and save your profile, then book your apppointment</h4>
+    <div class="row" id="row1">
+        <div class="col offset-lg-0">
+            <h3>New to this website..</h2><a class="btn btn-primary" href="{% url 'createaccountpage' %}">Create Account</a></h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p class="text-center">This website allows the you to book an appointment with the respective doctor whom he want to consult, you can view the old appointments, view the prescription, view the reports.<a data-bs-hover-animate="flash" href="{% url 'aboutpage' %}">For more details..</a></p>
+        </div>
+    </div> 
+
+  </div>
+  
+  
+
+
+</div> -->
+<!-- </div> -->
+<!-- </section> -->
+
+
+<!-- DRUG SECTION -->
+
+<section id="featured-services" class="featured-services">
+  <div class="container" data-aos="fade-up">
+    <div class="row">
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 mx-auto">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+          <div class="icon" ><i class="fas fa-heartbeat" style="width:200px"></i></div>
+          <h4 class="title"><a href="">Available</a></h4>
+          <p class="description"></p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 mx-auto">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+          <div class="icon"><i class="fas fa-pills" style="width:200px"></i></div>
+          <h4 class="title"><a href="">Reliable</a></h4>
+          <p class="description"></p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 mx-auto">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+          <div class="icon"><i class="fas fa-thermometer" style="width:200px"></i></div>
+          <h4 class="title"><a href="">Accessible</a></h4>
+          <p class="description"></p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 mx-auto">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+          <div class="icon"><i class="fas fa-dna" style="width:200px"></i></div>
+          <h4 class="title"><a href="">Disciplined</a></h4>
+          <p class="description"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Featured Services Section -->
+
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta bg-info">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="text-center">
+          <h3>In an emergency? Need help now?</h3>
+          <p> Ignite rapid response in times of crisis with SwiftAid—your beacon of support. No red tape, just quick, decisive action. Because every moment matters. Book Your Instant Appointment.</p>
+          <a class="cta-btn scrollto" href="{% url 'home' %}">Make an Make an Appointment</a>
+        </div>
+
+      </div>
+    </section><!-- End Cta Section -->
+
+
+<!-- END DRUG SECTION -->
+
+<!-- DOCTOR SECTION -->
+
+<hr style="background-color: #b3aeae;">
+
+
+
+
+<section id="doctors" class="doctors section-bg">
+    <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+        <div class="center">
+        <h2>Doctors</h2>
+        </div>
+    </div>
+      <div>
+        <p>Our aim is to connect healthcare with patients in delivering high-quality health services, thus improving accessibility of healthcare without being constrained by time and geographic boundaries.</p>
+      </div>
+
+      <div class="row">
+
+        <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+          <div class="member" data-aos="fade-up" data-aos-delay="100">
+            <div class="member-img">
+              <img src="{% static 'img/4.jpg' %}" width='500px';  class="img-fluid" alt="">
+              <div class="social">
+                <a href=""><i class="bi bi-twitter" style="color:blue"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info">
+              <h4>Emmanuel Obiano</h4>
+              <span>Chief Medical Officer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+          <div class="member" data-aos="fade-up" data-aos-delay="200">
+            <div class="member-img">
+              <img src="{% static 'img/2.jpg' %}" width='500px'; class="img-fluid" alt="">
+              <div class="social">
+                <a href=""><i class="bi bi-twitter"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info">
+              <h4>Sarah Jhonson</h4>
+              <span>Anesthesiologist</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+          <div class="member" data-aos="fade-up" data-aos-delay="300">
+            <div class="member-img">
+              <img src="{% static 'img/1.jpg' %}" width='500px'; class="img-fluid" alt="">
+              <div class="social">
+                <a href=""><i class="bi bi-twitter"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info">
+              <h4>Amanda Appiah</h4>
+              <span>Cardiology</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+          <div class="member" data-aos="fade-up" data-aos-delay="400">
+            <div class="member-img">
+              <img src="{% static 'img/doctor-5.jpg' %}" width='500px'; class="img-fluid" alt="">
+              <div class="social">
+                <a href=""><i class="bi bi-twitter"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info">
+              <h4>William Frimpong</h4>
+              <span>Neurosurgeon</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <hr>
+
+
+<!-- Footer -->
+<div>
+    <br>
+</div>
+<footer class="navbar navbar-dark navbar-expand-md sticky-bottom bg-arsh">
+
+
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+      <footer class="footer-area bg-f">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <h3>About Us</h3>
+                    <p>The main motive of this website is to provide a relaible service to our users with guranteed privacy. This website holds the detials of the patient to book their appointment with the doctors. <a href="{% url 'aboutpage' %}">see more details</a></p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3>Opening hours</h3>
+                    <p><span class="text-color">Mon-Tue: </span>10:Am - 9pm</p>
+                    <p><span class="text-color">Wed-Thu :</span> 10:Am - 9PM</p>
+                    <p><span class="text-color">Fri-Sat :</span> 10:Am - 9PM</p>
+                    <p><span class="text-color">Sunday :</span> Closed</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3>Contact information</h3>
+                    <p class="lead">Dansoman Street, Wiseley Grammar, Accra, Ghana, +233238559158</p>
+                    <p class="lead"><a href="#">+233-23855-9158</a></p>
+                    <p><a href="#"> hospitalmanagement@gmail.com</a></p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3>Subscribe</h3>
+                    <div class="subscribe_form">
+                        <form class="subscribe_form">
+                          {% csrf_token %}
+                          <div>
+                            <input name="EMAIL" id="subs-email" class="form_input" placeholder="Email Address..."
+                                   type="email">
+                          </div>
+                        
+                          <div>
+                            <button type="submit" class="submit bg-primary" style="color:white; margin-top:5px; border-radius: 0.5em; border:none;">SUBSCRIBE</button>
+                          </div>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                    <ul class="list-inline f-social">
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li class="list-inline-item"><a href=""><i class="fa fa-linkedin" aria-hidden="false"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p class="company-name">All Rights Reserved. &copy; 2022 <a href="#">Hospital Management System</a>
+                            Programmed By : ALEX
+
+    
+    </footer>
+  
+  <!-- Footer -->        
+<style>
+ 
+    .imgbackground{
+    background-image:url('static/img/slide-1.jpg');
+    
+    width:100%;
+   
+    margin-left:auto;
+    height: 700px;
+    
+    
+    
+    }
+
+
+  .bg-arsh{
+    background-color:#0a0909;
+    color:white;
+  }
+    
+/*--------------------------------------------------------------
+# Doctors
+--------------------------------------------------------------*/
+.doctors .member {
+    margin-bottom: 20px;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0px 2px 15px rgba(63, 187, 192, 0.1);
+  }
+  .doctors .member .member-img {
+    position: relative;
+    overflow: hidden;
+  }
+  .doctors .member .social {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 40px;
+    opacity: 0;
+    transition: ease-in-out 0.3s;
+    background: rgba(255, 255, 255, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .doctors .member .social a {
+    transition: color 0.3s;
+    color: #555555;
+    margin: 0 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .doctors .member .social a i {
+    line-height: 0;
+  }
+  .doctors .member .social a:hover {
+    color: #3fbbc0;
+  }
+  .doctors .member .social i {
+    font-size: 18px;
+    margin: 0 2px;
+  }
+  .doctors .member .member-info {
+    padding: 25px 15px;
+  }
+  .doctors .member .member-info h4 {
+    font-weight: 700;
+    margin-bottom: 5px;
+    font-size: 18px;
+    color: #555555;
+  }
+  .doctors .member .member-info span {
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+    color: #aaaaaa;
+  }
+  .doctors .member .member-info p {
+    font-style: italic;
+    font-size: 14px;
+    line-height: 26px;
+    color: #777777;
+  }
+  .doctors .member:hover .social {
+    opacity: 1;
+  }
+
+  .center{
+    text-align: center;
+    border-bottom: blue;
+  } 
+
+
+
+
+  .container1 {
+    position: auto;
+    text-align: center;
+    color: white;
+  }
+
+  
+/* Centered text */
+.centered {
+  /* position: absolute; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}  
+
+.container1 .content {
+  margin-top: 110px;
+  position: absolute; /* Position the background text */
+  bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  color: #f1f1f1; /* Grey text */
+  width: 80%; /* Full width */
+  height: 80%;
+  padding: 20px; /* Some padding */
+}
+
+
+</style>
+
+
+{% endblock %}
+
+

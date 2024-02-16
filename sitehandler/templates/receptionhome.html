@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% include 'include.html' %}
+    {% load static %}
+</head>
+
+<body>
+    {% include 'adminnav.html' %}
+    <div id="wrapper">
+        {% include 'reception_nav.html' %}
+        <div class="page-content-wrapper">
+            <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars"></i></a>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div>
+                            <h5 class="text-center">You are sucessfully logged in..{{ user.first_name }}  <span> <i class="fa fa-check-circle fa-1x text-success" aria-hidden="true"></i></span></h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="container mt-4">
+                    <div class="row">
+                      <!-- Icon 1 -->
+                      <div class="col-lg-4 mb-4">
+                        <div class="card bg-secondary text-white text-center">
+                          <div class="card-body">
+                            <a href="{% url 'profile' %}" >
+                            <i class="fa fa-user-circle fa-4x text-white" aria-hidden="true" ></i>
+                            <h5 class="card-title mt-2 text-white">User Profile</h5>
+                        </a>
+                          </div>
+                        </div>
+                      </div>
+                    
+                      <!-- Icon 2 -->
+                      <!-- <div class="col-lg-4 mb-4">
+                        <div class="card bg-warning text-white text-center">
+                          <div class="card-body">
+                            <a href="{% url 'makeappointments' %}" >
+                            <i class="fa fa-calendar-plus-o fa-4x text-white" aria-hidden="true"></i>
+                            <h5 class="card-title mt-2 text-white">Book Appointment</h5>
+                        </a>
+                          </div>
+                        </div>
+                      </div> -->
+                    
+                      <!-- Icon 3 -->
+                      <div class="col-lg-4 mb-4">
+                        <div class="card bg-info text-white text-center">
+                          <div class="card-body">
+                            <a href="{% url 'viewappointments' %}" >
+                            <i class="fa fa-calendar-check-o fa-4x text-white" aria-hidden="true"></i>
+                            <h5 class="card-title mt-2 text-white">View Appointments</h5>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    
+
+                      <!-- Icon 1 -->
+                      <!-- <div class="col-lg-4 mb-4">
+                        <div class="card bg-success text-white text-center">
+                          <div class="card-body">
+                            <a href="{% url 'heartdisease' %}" >
+                            <i class="fa fa-heartbeat fa-4x text-white" aria-hidden="true"></i>
+                            <h5 class="card-title mt-2 text-white">ML Heart Disease Predictor</h5>
+                            </a>
+                          </div>
+                        </div>
+                      </div> -->
+                    
+                      <!-- Icon 2 -->
+                      <!-- <div class="col-lg-4 mb-4">
+                        <div class="card bg-primary text-white text-center">
+                          <div class="card-body">
+                            <a href="{% url 'diabetesdisease' %}" >
+                            <i class="fa fa-line-chart fa-4x text-white" aria-hidden="true"></i>
+                            <h5 class="card-title mt-2 text-white">ML Diabetes Prediction</h5>
+                           </a>
+                          </div>
+                        </div>
+                      </div> -->
+                    
+                      <!-- Icon 3 -->
+                      <div class="col-lg-4 mb-4">
+                        <div class="card bg-danger text-white text-center">
+                          <div class="card-body">
+                            <a href="{% url 'logout' %}" >
+                            <i class="fa fa-arrow-circle-right fa-4x text-white" aria-hidden="true"></i>
+                            <h5 class="card-title mt-2 text-white">Logout</h5>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    
+
+
+
+                    </div>
+                  </div>
+
+
+
+                
+                  
+            </div>
+        </div>
+    </div>
+{% include 'redirecthome.html' %}
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/back-to-top-scroll.js' %}"></script>
+<script src="{% static 'js/Bold-BS4-Animated-Back-To-Top.js' %}"></script>
+<script src="{% static 'js/bs-init.js' %}"></script>
+<script src="{% static 'js/Sidebar-Menu.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% include 'include.html' %}
+    {% load static %}
+</head>
+
+<body>
+    {% include 'adminnav.html' %}
+    <div id="wrapper">
+        {% include 'patient_nav.html' %}
+        <div class="page-content-wrapper">
+            <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars"></i></a>
+                <div class="row register-form">
+                    <div class="col-md-8 offset-md-2">
+                        <form class="custom-form" method="post">
+                            {% csrf_token %}
+                            <h1 style="margin-top: 0px;">Diabetes Predictor</h1>
+                            
+                            
+                            <div class="form-row form-group">
+                                <!-- <div class="col-sm-4 label-column"><label class="col-form-label" for="pawssword-input-field">Name</label></div> -->
+                                <div class="col-sm-6 input-column">
+                                    <input class="form-control" type="text" placeholder="Enter number of pregnancy"  name="pregnancyNum" required>
+                                </div>
+                                <div class="col-sm-6 input-column">
+                                    <input class="form-control" type="text" placeholder="Enter glucose level" name="glucoseLevel" required>
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                                <!-- <div class="col-sm-4 label-column"><label class="col-form-label" for="pawssword-input-field">Email</label></div> -->
+                                <div class="col-sm-6 input-column">
+                                    <input class="form-control" type="text" placeholder="Enter blood pressure level" name="bloodPressure" required>
+                                </div>
+                                <div class="col-sm-6 input-column">
+                                    <input class="form-control" placeholder="Enter Skin Thickness level" type="text" name="skinThinkness">
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                                <!-- <div class="col-sm-4 label-column"><label class="col-form-label" for="repeat-pawssword-input-field">Appointment Date</label></div> -->
+                                <div class="col-sm-6 input-column">
+                                    <input class="form-control" type="text" placeholder="Enter insulin level" name="insulin" required="">
+                                </div>
+                                <div class="col-sm-6 input-column">
+                                    <input class="form-control" placeholder="Enter BMI " type="text" name="bmi" required>
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                                <!-- <div class="col-sm-4 label-column"><label class="col-form-label" for="repeat-pawssword-input-field">Appointment Time</label></div> -->
+                                <div class="col-sm-6 input-column">
+                                    <input class="form-control" type="text" placeholder="Enter diabetes pedigree function value" name="diabetesPedigreeFunc" required>
+                                </div>
+                                <div class="col-sm-6 input-column">
+                                    <input class="form-control" type="text" placeholder="Enter age" name="age" required>
+                                </div>
+                                
+                            </div>
+                            <!-- <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="repeat-pawssword-input-field">Symptoms</label></div>
+                                <div class="col-sm-6 input-column">
+                                    <textarea class="form-control" name="symptoms" required=""></textarea>
+                                </div>
+                            </div> -->
+                        <button class="btn btn-light submit-button" type="submit">Submit</button></form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars"></i></a>
+            <h2 class="text-center">HEART DISEASE CHECK</h2>
+            <div class="text-center" role="tablist" id="accordion-1">
+                    
+                       
+            </div>
+        </div> -->
+        </div>
+        </div>
+    </div>
+    <div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-arrow-circle-up"></i></span></div>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/back-to-top-scroll.js' %}"></script>
+<script src="{% static 'js/Bold-BS4-Animated-Back-To-Top.js' %}"></script>
+<script src="{% static 'js/bs-init.js' %}"></script>
+<script src="{% static 'js/Sidebar-Menu.js' %}"></script>
+</body>
+</html>
