@@ -14,7 +14,7 @@
             <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars"></i></a>
                 <div class="row register-form">
                     <div class="col-md-8 offset-md-2">
-                        <form class="custom-form" method="post">
+                        <form class="custom-form" method="post" action="{% url 'diabetesdisease' %}">
                             {% csrf_token %}
                             <h1 style="margin-top: 0px;">Diabetes Predictor</h1>
                             
@@ -22,10 +22,10 @@
                             <div class="form-row form-group">
                                 <!-- <div class="col-sm-4 label-column"><label class="col-form-label" for="pawssword-input-field">Name</label></div> -->
                                 <div class="col-sm-6 input-column">
-                                    <input class="form-control" type="text" placeholder="Enter number of pregnancy"  name="pregnancyNum" required>
+                                    <input class="form-control" type="text" placeholder="Enter number of pregnancy"  name="pregnancy" required>
                                 </div>
                                 <div class="col-sm-6 input-column">
-                                    <input class="form-control" type="text" placeholder="Enter glucose level" name="glucoseLevel" required>
+                                    <input class="form-control" type="text" placeholder="Enter glucose level" name="glucose" required>
                                 </div>
                             </div>
                             <div class="form-row form-group">
@@ -34,7 +34,7 @@
                                     <input class="form-control" type="text" placeholder="Enter blood pressure level" name="bloodPressure" required>
                                 </div>
                                 <div class="col-sm-6 input-column">
-                                    <input class="form-control" placeholder="Enter Skin Thickness level" type="text" name="skinThinkness">
+                                    <input class="form-control" placeholder="Enter Skin Thickness level" type="text" name="skinThickness">
                                 </div>
                             </div>
                             <div class="form-row form-group">

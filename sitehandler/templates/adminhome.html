@@ -4,13 +4,105 @@
     {% include 'include.html' %}
     {% load static %}
 </head>
-<body style="background-image: url(&quot;{% static 'img/star-sky.jpg' %}&quot;);">
+<!-- <body style="background-image: url(&quot;{% static 'img/star-sky.jpg' %}&quot;);"> -->
+<body >
     {% include 'adminnav.html' %}
     <div id="wrapper">
         {% include 'admin_include.html' %}
         <div class="page-content-wrapper">
-            <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars" style="color: white;"></i></a>
-                <h1 class="text-center" style="color: white;">You are sucessfully logged in..{{ user.username }}</h1>
+            <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars"></i></a>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div>
+                            <h5 class="text-center">You are sucessfully logged in..{{ user.username }}  <span> <i class="fa fa-check-circle fa-1x text-success" aria-hidden="true"></i></span></h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="container mt-4">
+                    <div class="row">
+                      <!-- Icon 1 -->
+                      <div class="col-lg-4 mb-4">
+                        <div class="card bg-secondary text-white text-center">
+                          <div class="card-body">
+                            <a href="{% url 'adminaddDoctor' %}" >
+                            <i class="fa fa-user-plus fa-4x text-white" aria-hidden="true" ></i>
+                            <h5 class="card-title mt-2 text-white">Add Doctor</h5>
+                        </a>
+                          </div>
+                        </div>
+                      </div>
+                    
+                      <!-- Icon 2 -->
+                      <div class="col-lg-4 mb-4">
+                        <div class="card bg-warning text-white text-center">
+                          <div class="card-body">
+                            <a href="{% url 'adminviewDoctor' %}" >
+                            <i class="fa fa-user-md fa-4x text-white" aria-hidden="true"></i>
+                            <h5 class="card-title mt-2 text-white">View Doctor</h5>
+                        </a>
+                          </div>
+                        </div>
+                      </div>
+                    
+                      <!-- Icon 3 -->
+                      <div class="col-lg-4 mb-4">
+                        <div class="card bg-info text-white text-center">
+                          <div class="card-body">
+                            <a href="{% url 'adminviewAppointment' %}" >
+                            <i class="fa fa-calendar-check-o fa-4x text-white" aria-hidden="true"></i>
+                            <h5 class="card-title mt-2 text-white">View Appointment</h5>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    
+
+                      <!-- Icon 1 -->
+                      <div class="col-lg-4 mb-4">
+                        <div class="card bg-success text-white text-center">
+                          <div class="card-body">
+                            <a href="{% url 'adminaddReceptionist' %}" >
+                            <i class="fa fa-user-plus fa-4x text-white" aria-hidden="true"></i>
+                            <h5 class="card-title mt-2 text-white">Add Receptionist </h5>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    
+                      <!-- Icon 2 -->
+                      <div class="col-lg-4 mb-4">
+                        <div class="card bg-primary text-white text-center">
+                          <div class="card-body">
+                            <a href="{% url 'adminviewReceptionist' %}" >
+                            <i class="fa fa-user-tie fa-4x text-white" aria-hidden="true"></i>
+                            <h5 class="card-title mt-2 text-white">View Receptionist</h5>
+                           </a>
+                          </div>
+                        </div>
+                      </div>
+                    
+                      <!-- Icon 3 -->
+                      <div class="col-lg-4 mb-4">
+                        <div class="card bg-danger text-white text-center">
+                          <div class="card-body">
+                            <a href="{% url 'adminlogout' %}" >
+                            <i class="fa fa-arrow-circle-right fa-4x text-white" aria-hidden="true"></i>
+                            <h5 class="card-title mt-2 text-white">Logout</h5>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    
+
+
+
+                    </div>
+                  </div>
+
+
+
+                
+                  
             </div>
         </div>
     </div>

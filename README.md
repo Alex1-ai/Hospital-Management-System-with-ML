@@ -1,8 +1,8 @@
 # Django-based-Hospital-Mangament-System
 
-## Project running live @http://hmsindjango.herokuapp.com/
+## Project running live @http://alexis.herokuapp.com/
 
-This is a Django based Hospital Management System. The main objective of this project is, the patient can make an appointment with the doctor of particular organization through online
+This is a Django based Hospital Management System. The main objective of this project is, the patient can make an appointment with the doctor of particular organization through online and integrating Machine Learning Methodology to help enhance the system and patients.
 
 ## Requirements
 For this project to run on your system we need the some packages to be installed for that open your command prompt and navigate to the folder where there is requirements.txt file and enter the command "pip install -r requirements.txt"

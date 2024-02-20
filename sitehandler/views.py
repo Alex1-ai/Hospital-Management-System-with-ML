@@ -6,6 +6,8 @@ from django.utils import timezone
 import pickle
 import numpy as np
 import os
+from sklearn.preprocessing import StandardScaler
+import sklearn
 # Create your views here.
 
 
@@ -316,32 +318,89 @@ def MakeAppointments(request):
             return render(request, 'pateintmakeappointments.html', d)
 
 def heart_disease_prediction(request):
+    message = ''
     # loading the saved model
     # loaded_model = pickle.load(open('ml_model/heart_disease_trained_model.sav', 'rb'))
-    file_path = os.path.join(os.path.dirname(__file__), 'ml_model', 'heart_disease_trained_model.sav')
-    loaded_model = pickle.load(open(file_path, 'rb'))
-    input_data = (62,0,0, 140,268,0,0,160,0,3.6,0,2,2)
+    if request.method == 'POST':
+        age = request.POST['age']
+        sex = request.POST['sex']
+        cp = request.POST['cp']
+        trestbps = request.POST['trestbps']
+        chol = request.POST['chol']
+        fbs = request.POST['fbs']
+        restecg = request.POST['restecg']
+        thalach = request.POST['thalach']
+        exang = request.POST['exang']
+        oldpeak=request.POST['oldpeak']
+        slope = request.POST['slope']
+        ca = request.POST['ca']
+        thal = request.POST['thal']
+        file_path = os.path.join(os.path.dirname(__file__), 'ml_model', 'heart_disease_trained_model.sav')
+        loaded_model = pickle.load(open(file_path, 'rb'))
+        # input_data = (age,sex,cp, trestbps,chol,fbs,restecg,thalach,exang,oldpeak, slope,ca,thal)
+        print(int(age),int(sex),int(cp), int(trestbps),int(chol),int(fbs),int(restecg),int(thalach),int(exang),float(oldpeak), int(slope),int(ca),int(thal))
+        print(type(age),type(sex),type(cp),type(trestbps),type(chol),type(fbs),type(restecg),type(thalach),type(exang),type(oldpeak), type(slope),type(ca),type(thal))
+        # input_data = (62,0,0, 140,268,0,0,160,0,3.6,0,2,2)
+        input_data = (int(age),int(sex),int(cp), int(trestbps),int(chol),int(fbs),int(restecg),int(thalach),int(exang),float(oldpeak), int(slope),int(ca),int(thal))
 
     # change the input data to a numpy array
-    input_data_as_numpy_array = np.array(input_data)
+        input_data_as_numpy_array = np.array(input_data)
 
-    # reshape the numpy array as we are predicting for only one instance
-    input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
+        # reshape the numpy array as we are predicting for only one instance
+        input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
 
-    prediction = loaded_model.predict(input_data_reshaped)
-    print(prediction)
+        prediction = loaded_model.predict(input_data_reshaped)
+        print(prediction)
+        context = {"message":message}
+        if (prediction[0] == 0):
+            print("The person does not have a Heart Disease")
+            message = "The person does not have a Heart Disease"
+            return render(request, 'heartdisease.html', {"context":context})
+            
+            
+        else:
+            print("The Person has Heart Disease")
+            message = "The Person has Heart Disease"
+            return render(request, 'heartdisease.html', {"context":context})
 
-    if (prediction[0] == 0):
-        print("The person does not have a Heart Disease")
-    else:
-        print("The Person has Heart Disease")
+    
 
-
+    context = {"message":message}
     if not request.user.is_active:
         return redirect('loginpage')
-    return render(request, 'heartdisease.html')
+    return render(request, 'heartdisease.html', {"context":context})
 
 def diabetes_disease_prediction(request):
+    if request.method == 'POST':
+        pregnancy = request.POST['pregnancy']
+        glucose = request.POST['glucose']
+        bloodPressure = request.POST['bloodPressure']
+        skinThickness = request.POST['skinThickness']
+        insulin = request.POST['insulin']
+        bmi = request.POST['bmi']
+        diabetesPedigreeFunc = request.POST['diabetesPedigreeFunc']
+        age = request.POST['age']
+        print(pregnancy, glucose, bloodPressure, skinThickness, insulin, bmi, diabetesPedigreeFunc, age)
+        # ( 4, 110, 92, 0, 0, 37.6, 0.191, 30)
+        file_path = os.path.join(os.path.dirname(__file__), 'ml_model', 'diabetes_trained_model.sav')
+        loaded_model = pickle.load(open(file_path, 'rb'))
+        scaler = StandardScaler()
+        input_data = ( 4, 110, 92, 0, 0, 37.6, 0.191, 30)
+
+        # changing  the input data to numpy array
+        input_data_as_numpy_array = np.asarray(input_data)
+
+        # reshape the array as we are predicting for one instance
+        input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
+
+        # standardized the input data
+        # std_data = scaler.transform(input_data_reshaped)
+        # print(std_data)
+        # prediction = loaded_model.predict(std_data)
+        prediction = loaded_model.predict(input_data_reshaped)
+
+        print(prediction)   
+        
     if not request.user.is_active:
         return redirect('loginpage')
     return render(request, 'diabetesdisease.html')

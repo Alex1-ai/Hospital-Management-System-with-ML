@@ -10,10 +10,35 @@
     {% include 'adminnav.html' %}
     <div id="wrapper">
         {% include 'patient_nav.html' %}
+        
         <div class="page-content-wrapper">
+
             <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars"></i></a>
+                
+                        <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="resultModalLabel">Result</h5>
+                                      
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <i class="fas fa-check-circle fa-4x mb-3 text-success"></i>
+                                        <p>{{context.message}}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Dismiss</button> -->
+                                        <p class="text-muted small ">Dismiss: click outside the prompt(modal) to dismiss</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+               
+                
                 <div class="row register-form">
                     <div class="col-md-8 offset-md-2">
+                        
                         <form class="custom-form" method="post">
                             {% csrf_token %}
                             <h1 style="margin-top: 0px;">Heart Disease Predictor</h1>
@@ -31,7 +56,7 @@
                                 <!-- <div class="col-sm-4 label-column"><label class="col-form-label" for="pawssword-input-field">Email</label></div> -->
                                 <div class="col-sm-6 input-column">
                                     <label class="form-label" for="gender">Gender</label>
-                                    <select class="form-control"  id="gender" name="gender">
+                                    <select class="form-control"  id="gender" name="sex">
                                         <option disabled >Gender</option>
                                         <option value="1">Male</option>
                                         <option value="0">Female</option>
@@ -52,7 +77,7 @@
                                 </div>
                                 <div class="col-sm-6 input-column">
                                     <label class="form-label" for="bloodPressure">Blood pressure(trestps)</label>
-                                    <input class="form-control" id="bloodPressure" type="text"  name="trestps">
+                                    <input class="form-control" id="bloodPressure" type="text"  name="trestbps">
                                 </div>
                             </div>
                             <div class="form-row form-group">
@@ -209,11 +234,29 @@
         </div>
     </div>
     <div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-arrow-circle-up"></i></span></div>
+
+    <!-- Add this script at the end of your <body> section -->
+
+        <script>
+            $(document).ready(function () {
+                // Check if the modal should be displayed
+                {% if context.message != '' %}
+                    // Show the modal
+                    $('#resultModal').modal('show');
+                {% endif %}
+            });
+        </script>
+        
+
     <script src="{% static 'js/jquery.min.js' %}"></script>
 <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/back-to-top-scroll.js' %}"></script>
 <script src="{% static 'js/Bold-BS4-Animated-Back-To-Top.js' %}"></script>
 <script src="{% static 'js/bs-init.js' %}"></script>
 <script src="{% static 'js/Sidebar-Menu.js' %}"></script>
+
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy6nEUE1a1lYY" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js" integrity="sha384-hXFv8PIyoT+x1tBBVoPVz/j+q0zI94EpLIWj87W8JmEEdyXxWnY7eblRm1g9z6N" crossorigin="anonymous"></script> -->
 </body>
 </html>
