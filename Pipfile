@@ -23,6 +23,7 @@ whitenoise = "==5.0.1"
 numpy = "*"
 sklearn3 = "*"
 scikit-learn = "==1.2.2"
+pandas = "*"
 
 [dev-packages]
 

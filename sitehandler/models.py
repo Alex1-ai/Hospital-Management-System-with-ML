@@ -94,6 +94,17 @@ class Appointment(models.Model):
 	symptoms = models.CharField(max_length=100)
 	status = models.BooleanField()
 	prescription = models.CharField(max_length=200)
+
+	@property
+	def appointment_month(self):
+		return self.appointmentdate.strftime('%B')  # Returns the full month name
+
+	@property
+	def appointment_year(self):
+		return self.appointmentdate.year
 	
 	def __str__(self):
 		return self.patientname+" you have appointment with "+self.doctorname
+	
+
+		

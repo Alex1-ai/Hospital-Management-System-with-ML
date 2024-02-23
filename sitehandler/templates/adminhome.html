@@ -3,15 +3,43 @@
 <head>
     {% include 'include.html' %}
     {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css" integrity="sha512-KXol4x3sVoO+8ZsWPFI/r5KBVB/ssCGB5tsv2nVOKwLg33wTFP3fmnXa47FdSVIshVTgsYk/1734xSk9aFIa4A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+   
 </head>
 <!-- <body style="background-image: url(&quot;{% static 'img/star-sky.jpg' %}&quot;);"> -->
 <body >
+  <script>
+   
+      // var ctxP = document.getElementById("pieChart").getContext('2d');
+      // var myPieChart = new Chart(ctxP, {
+      //   type: 'pie',
+      //   data: {
+      //     labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
+      //     datasets: [{
+      //       data: [300, 50, 100, 40, 120],
+      //       backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
+      //       hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+      //     }]
+      //   },
+      //   options: {
+      //     responsive: true
+      //   }
+      // });
+
+  </script>
+  
+    
     {% include 'adminnav.html' %}
     <div id="wrapper">
         {% include 'admin_include.html' %}
         <div class="page-content-wrapper">
             <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars"></i></a>
-                <div class="row">
+                
+               
+                 <div class="row">
                     <div class="col-md-12">
                         <div>
                             <h5 class="text-center">You are sucessfully logged in..{{ user.username }}  <span> <i class="fa fa-check-circle fa-1x text-success" aria-hidden="true"></i></span></h5>
@@ -94,17 +122,190 @@
                       </div>
                     
 
-
+                      {% for month, count in months_with_counts.item %}'{{month}}',{% endfor %}
 
                     </div>
                   </div>
+                  <div class="container mt-4">
+                    <div class="row">
+                      <div class="col-lg-12 mb-3">
+                        <h2 class="mb-3">Hospital Analytics</h2> 
+                         count  {% for month, count in months_with_counts.items %}'{{month}}',{% endfor %}
+                      </div>
+                      <!-- Icon 1 -->
+                      <div class="col-lg-4 mb-4 text-center">
+                        <canvas id="pieChart"> </canvas>
+                        <h4 class="mb-3 pt-2">Groups</h4> 
+
+                      </div>
+                      <div class="col-lg-4 mb-4 text-center">
+                        <canvas id="pieChart2"> </canvas>
+                        <h4 class="mb-3 pt-2">Doctors</h4> 
+                      </div>
+                      <div class="col-lg-4 mb-4 text-center">
+                        <canvas id="pieChart3"></canvas>
+                        <h4 class="mb-3 pt-2">Gender or Staffs</h4>
+                        
+
+                      </div>
+                           
+                    </div>
+                    </div>
+
+                  <div class="container mt-4">
+                    <div class="row">
+                      <div class="col-lg-12 mb-2">
+                        <h2 class="mb-3">Patient Appointment</h2>
+                       
+                      </div>
+                      
+                      <!-- Icon 1 -->
+                      <div class="col-lg-12 mb-3">
+                        <!-- <h2 class="mb-3">Patient Appointment</h2> -->
+                        <canvas id="barChart"></canvas>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+
+                  
 
 
 
                 
                   
             </div>
-        </div>
+        
+        
+          </div>
+
+        
     </div>
+ 
+
+<script>
+ $(document).ready(new function(){
+      console.log("hello")
+    
+    //pie
+    
+      
+      var ctxP = document.getElementById("pieChart").getContext('2d');
+      var myPieChart = new Chart(ctxP, {
+        type: 'pie',
+        data: {
+          labels: [{% for item in context.groups_with_counts%}'{{item.name}}',{% endfor %}],
+          datasets: [{
+            // data: [300, 50, 100, 40, 120],
+            data: [{% for item in context.groups_with_counts %}{{item.num_users}},{% endfor %}],
+            backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360","green", "purple", "brown", "arsh","red"],
+            hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+          }]
+        },
+        options: {
+          responsive: true
+        }
+      });
+
+      
+      
+
+  // Assuming you have passed the 'groups_with_counts' data to the template
+  // var groupsData = {% for group in groups_with_counts %}{ name: "{{ group.name }}", count: {{ group.num_users }} }{% if not forloop.last %},{% endif %}{% endfor %};
+
+  
+
+
+    // chart2
+    var ctxP2 = document.getElementById("pieChart2").getContext('2d');
+    var myPieChart = new Chart(ctxP2, {
+      type: 'pie',
+      data: {
+        labels: [{% for doctor in context.doctor_with_counts %} '{{doctor.specialization}}', {% endfor %}],
+        datasets: [{
+          data: [{% for doctor in context.doctor_with_counts %} {{doctor.num_doctors}}, {% endfor %}],
+          backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
+          hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+        }]
+      },
+      options: {
+        responsive: true
+      }
+    });
+
+
+      // chart3
+    var ctxP3 = document.getElementById("pieChart3").getContext('2d');
+    var myPieChart = new Chart(ctxP3, {
+      type: 'pie',
+      data: {
+        labels: [{% for patient in context.patients_with_counts %}'{{patient.gender}}', {% endfor %}],
+        datasets: [{
+          data: [{% for patient in context.patients_with_counts %}{{patient.num_patients}},{% endfor %}],
+          backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
+          hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+        }]
+      },
+      options: {
+        responsive: true
+      }
+    });
+
+
+
+    //bar
+    var ctxB = document.getElementById("barChart").getContext('2d');
+  var myBarChart = new Chart(ctxB, {
+    type: 'bar',
+    data: {
+      labels: [{% for month, count in context.months_with_counts.items %}'{{month}}',{% endfor %}],
+      datasets: [{
+        label: '#{{context.len_appointments}} Appointments',
+        data: [{% for month, count in context.months_with_counts.items %}{{count}},{% endfor %}],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.8)',  // Jan
+          'rgba(54, 162, 235, 0.8)', // Feb
+          'rgba(255, 206, 86, 0.8)', // Mar
+          'rgba(75, 192, 192, 0.8)', // Apr
+          'rgba(153, 102, 255, 0.8)', // May
+          'rgba(255, 159, 64, 0.8)',  // Jun
+          'rgba(200, 200, 200, 0.8)', // Jul
+          'rgba(100, 100, 100, 0.8)', // Aug
+          'rgba(50, 50, 50, 0.8)',    // Sep
+          'rgba(0, 128, 0, 0.8)',     // Oct
+          'rgba(255, 0, 0, 0.8)',     // Nov
+          'rgba(0, 0, 255, 0.8)'      // Dec
+        ],
+        borderColor: [
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(200, 200, 200, 1)',
+          'rgba(100, 100, 100, 1)',
+          'rgba(50, 50, 50, 1)',
+          'rgba(0, 128, 0, 1)',
+          'rgba(255, 0, 0, 1)',
+          'rgba(0, 0, 255, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+})
+</script>
 </body>
 </html>
