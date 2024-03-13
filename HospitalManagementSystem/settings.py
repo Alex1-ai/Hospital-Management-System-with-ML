@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "django_extensions",
+    'djangoviz',
     'sitehandler',
 ]
 
@@ -125,3 +127,10 @@ STATIC_FILES = os.path.join(BASE_DIR, 'static')
 # LOGIN_REDIRECT_URL = '/'
 #     # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+# ERM ENTITY
+GRAPH_MODELS = {
+    "all_applications":True,
+    "group_models": True
+}

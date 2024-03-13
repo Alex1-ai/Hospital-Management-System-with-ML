@@ -10,20 +10,21 @@ import pickle
 
 
 
-# loading the diabetes dataset
-file_path = os.path.join(os.path.dirname(__file__), 'ml_model', 'diabetes.csv')
-diabetes_dataset = pd.read_csv(file_path)
-# print(diabetes_dataset.head())
 
-X = diabetes_dataset.drop(columns="Outcome", axis=1)
-# print(X)
-
-scaler = StandardScaler()
-scaler.fit(X)
-file_path = os.path.join(os.path.dirname(__file__), 'ml_model', 'diabetes_trained_model.sav')
-loaded_model = pickle.load(open(file_path, 'rb'))
 
 def predict_diabetes(input_data):
+    # loading the diabetes dataset
+    file_path = os.path.join(os.path.dirname(__file__), 'ml_model', 'diabetes.csv')
+    diabetes_dataset = pd.read_csv(file_path)
+    # print(diabetes_dataset.head())
+
+    X = diabetes_dataset.drop(columns="Outcome", axis=1)
+    # print(X)
+
+    scaler = StandardScaler()
+    scaler.fit(X)
+    file_path = os.path.join(os.path.dirname(__file__), 'ml_model', 'diabetes_trained_model.sav')
+    loaded_model = pickle.load(open(file_path, 'rb'))
     # changing  the input data to numpy array
     input_data_as_numpy_array = np.asarray(input_data)
 
@@ -61,11 +62,11 @@ def predict_heart_disease(input_data):
     print(prediction)
         
     if (prediction[0] == 0):
-        print("The person does not have a Heart Disease")
+        # print("The person does not have a Heart Disease")
         return "The result shows this patient is negative"
             # return render(request, 'heartdisease.html', {"context":context})    
     else:
-        print("The Person has Heart Disease")
+        # print("The Person has Heart Disease")
         return "The result shows this patient is positive"
     
-predict_heart_disease((62,0,0, 140,268,0,0,160,0,3.6,0,2,2))
+# predict_heart_disease((62,0,0, 140,268,0,0,160,0,3.6,0,2,2))

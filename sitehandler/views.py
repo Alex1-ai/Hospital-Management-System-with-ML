@@ -90,11 +90,14 @@ def createaccountpage(request):
         bloodgroup = request.POST['bloodgroup']
         try:
             if password == repeatpassword:
+                print("entered 1")
                 Patient.objects.create(name=name, email=email, password=password, gender=gender,
                                        phonenumber=phonenumber, address=address, birthdate=birthdate, bloodgroup=bloodgroup)
+                
                 user = User.objects.create_user(
                     first_name=name, email=email, password=password, username=email)
                 pat_group = Group.objects.get(name='Patient')
+                print("entered 2")
                 pat_group.user_set.add(user)
                 # print(pat_group)
                 user.save()
@@ -103,6 +106,7 @@ def createaccountpage(request):
             else:
                 error = "yes"
         except Exception as e:
+            print("Error during user creation:", e)
             error = "yes"
             # print("Error:",e)
     d = {'error': error}

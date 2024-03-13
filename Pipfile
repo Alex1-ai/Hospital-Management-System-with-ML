@@ -24,6 +24,14 @@ numpy = "*"
 sklearn3 = "*"
 scikit-learn = "==1.2.2"
 pandas = "*"
+graphviz = "*"
+django-extensions = "*"
+pyparsing = "*"
+pydot = "*"
+djangoviz = "*"
+pytest = "*"
+pytest-django = "*"
+pytest-cov = "*"
 
 [dev-packages]
 
