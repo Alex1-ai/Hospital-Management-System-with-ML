@@ -3,11 +3,9 @@ from django.test import RequestFactory
 from django.urls import reverse
 from django.contrib.auth.models import User, Group
 from sitehandler.views import createaccountpage
-from django.contrib.auth.models import Group
+from ..test_config import create_patient_group
 
-@pytest.fixture
-def create_patient_group():
-    Group.objects.create(name='Patient')
+
 @pytest.mark.django_db
 def test_createaccountpage_view(client, create_patient_group):
     # Prepare form data for a POST request
@@ -32,9 +30,9 @@ def test_createaccountpage_view(client, create_patient_group):
     # Check if the user was created and added to the 'Patient' group
     assert User.objects.filter(email='john@example.com').exists()
     user = User.objects.get(email='john@example.com')
-    # assert user.groups.filter(name='Patient').exists()
+    assert user.groups.filter(name='Patient').exists()
 
     # Verify the error message
     assert 'error' in response.context
-    print(response.context)
+    # print(response.context)
     assert response.context['error'] == 'no'

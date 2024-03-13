@@ -1,87 +1,47 @@
-# import pytest
-# from django.test import Client
-# from django.contrib.auth.models import User, Group
-# from sitehandler.models import Appointment
-# from django.utils import timezone
+import pytest
+from django.urls import reverse
+from django.test import Client
+from django.contrib.auth.models import User, Group
+from sitehandler.models import Doctor, Appointment
+from datetime import date
 
-# @pytest.fixture
-# def client():
-#     return Client()
+@pytest.mark.django_db
+def test_make_appointments_view(client):
+    # Create a patient user
+    patient_user = User.objects.create_user(username='patient@example.com', password='password')    
+    patient_group = Group.objects.create(name='Patient')
+    patient_user.groups.add(patient_group)
+    client.force_login(patient_user)
 
+    # Create some doctors for testing
+    doctor = Doctor.objects.create(
+        name='Dr. Smith',
+        email='smith@example.com',
+        password='password',
+        gender='Male',
+        phonenumber='1234567890',
+        address='123 Main St',
+        birthdate=date(1980, 1, 1),
+        bloodgroup='O+',
+        specialization='Cardiologist'
+    )
 
-# @pytest.mark.django_db
-# def test_viewappointments_patient(client):
-#     # Create a sample user and assign them to the 'Patient' group
-#     user = User.objects.create_user(username='patient_user', password='password')
-#     patient_group = Group.objects.create(name='Patient')
-#     patient_group.user_set.add(user)
+    # Test GET request
+    response_get = client.get(reverse('makeappointments'))
+    assert response_get.status_code == 200
+    assert 'alldoctors' in response_get.context
 
-#     # Create a sample appointment for the patient user
-#     appointment = Appointment.objects.create(
-#         patientemail=user,
-#         appointmentdate=timezone.now() + timezone.timedelta(days=1),
-#         status=True
-#     )
-
-#     # Log in the user
-#     client.login(username='patient_user', password='password')
-
-#     # Make a GET request to the view
-#     response = client.get('/viewappointments/')
-
-#     # Check that the response status code is 200 (OK)
-#     assert response.status_code == 200
-
-#     # Check that the upcoming appointment is present in the rendered content
-#     assert str(appointment.appointmentdate) in response.content.decode()
-
-# @pytest.mark.django_db
-# def test_viewappointments_doctor(client):
-#     # Create a sample user and assign them to the 'Doctor' group
-#     user = User.objects.create_user(username='doctor_user', password='password')
-#     doctor_group = Group.objects.create(name='Doctor')
-#     doctor_group.user_set.add(user)
-
-#     # Create a sample appointment for the doctor user
-#     appointment = Appointment.objects.create(
-#         doctoremail=user,
-#         appointmentdate=timezone.now() + timezone.timedelta(days=1),
-#         status=True
-#     )
-
-#     # Log in the user
-#     client.login(username='doctor_user', password='password')
-
-#     # Make a GET request to the view
-#     response = client.get('/viewappointments/')
-
-#     # Check that the response status code is 200 (OK)
-#     assert response.status_code == 200
-
-#     # Check that the upcoming appointment is present in the rendered content
-#     assert str(appointment.appointmentdate) in response.content.decode()
-
-# @pytest.mark.django_db
-# def test_viewappointments_receptionist(client):
-#     # Create a sample user and assign them to the 'Receptionist' group
-#     user = User.objects.create_user(username='receptionist_user', password='password')
-#     receptionist_group = Group.objects.create(name='Receptionist')
-#     receptionist_group.user_set.add(user)
-
-#     # Create a sample appointment for testing
-#     appointment = Appointment.objects.create(
-#         appointmentdate=timezone.now() + timezone.timedelta(days=1),
-#         status=True
-#     )
-
-#     # Log in the user
-#     client.login(username='receptionist_user', password='password')
-
-#     # Make a GET request to the view
-#     response = client.get('/viewappointments/')
-
-#     # Check that the response status code is 200 (OK)
-#     assert response.status_code == 200
-
-#     # Check that the upcoming appointment is present in the rendered content
-#     assert str(appointment.appointmentdate) in response.content.decode()
+    # Test POST request
+    form_data = {
+        'doctoremail': 'smith@example.com',
+        'doctorname': 'Dr. Smith',
+        'patientname': 'John Doe',
+        'patientemail': 'john@example.com',
+        'appointmentdate': '2024-03-15',
+        'appointmenttime': '10:00',
+        'symptoms': 'Chest pain'
+    }
+    response_post = client.post(reverse('makeappointments'), form_data)
+    assert response_post.status_code == 200
+    assert 'error' in response_post.context  # Assuming error message is returned in context
+    assert Appointment.objects.count() == 1  # Check if an appointment is created

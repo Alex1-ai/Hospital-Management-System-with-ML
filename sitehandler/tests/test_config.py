@@ -1,6 +1,6 @@
 from django.test import Client
 import pytest
-
+from django.contrib.auth.models import Group
 
 @pytest.fixture
 def user_data():
@@ -22,6 +22,23 @@ def user_data():
 
     }
 
+@pytest.fixture
+def create_patient_group():
+    Group.objects.create(name='Patient')
+
+
+@pytest.fixture
+def create_doctor_group():
+    Group.objects.create(name='Doctor')
+
+@pytest.fixture
+def create_receptionist_group():
+    Group.objects.create(name='Receptionist')
+
+
+@pytest.fixture
+def create_admin_group():
+    Group.objects.create(name='Admin')
 
 
 @pytest.fixture
