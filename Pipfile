@@ -32,6 +32,7 @@ djangoviz = "*"
 pytest = "*"
 pytest-django = "*"
 pytest-cov = "*"
+python-dotenv = "==0.21.1"
 
 [dev-packages]
 
