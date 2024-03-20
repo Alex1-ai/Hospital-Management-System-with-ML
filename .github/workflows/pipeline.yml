@@ -42,22 +42,22 @@ jobs:
                 deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
               run: |
                 curl "$deploy_url"
-    tag_release:
-        if: ${{ github.event_name == 'push' && !contains(toJson(github.event.commits.*.message), '#skip') }}
-        needs: [hospital_pipeline]
-        permissions:
-          contents: write
-        runs-on: ubuntu-20.04
-        steps:
-          - uses: actions/checkout@v3
-            with:
-              fetch-depth: '0'
-          - name: Bump version and push tag
-            uses: anothrNick/github-tag-action@1.64.0
-            env:
-              GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-              WITH_V: true
-              DEFAULT_BUMP: patch
+    # tag_release:
+    #     if: ${{ github.event_name == 'push' && !contains(toJson(github.event.commits.*.message), '#skip') }}
+    #     needs: [hospital_pipeline]
+    #     permissions:
+    #       contents: write
+    #     runs-on: ubuntu-20.04
+    #     steps:
+    #       - uses: actions/checkout@v3
+    #         with:
+    #           fetch-depth: '0'
+    #       - name: Bump version and push tag
+    #         uses: anothrNick/github-tag-action@1.64.0
+    #         env:
+    #           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+    #           WITH_V: true
+    #           DEFAULT_BUMP: patch
     # notify:
     #     if: always()
     #     runs-on: ubuntu-latest
