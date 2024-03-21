@@ -34,7 +34,7 @@ jobs:
         
             - name: Run tests
               run: |
-                pytest
+                python manage.py test
 
             - name: Deploy
               if: ${{ github.event_name == 'push' && github.ref =='refs/heads/main' && !contains(toJson(github.event.commits.*.message),'#skip')   }}
