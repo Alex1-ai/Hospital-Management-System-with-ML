@@ -32,7 +32,7 @@ else:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*", "https://hospital-system-70ox.onrender.com"]
+ALLOWED_HOSTS = ["*",'localhost', '127.0.0.1', '[::1]', "hospital-system-70ox.onrender.com"]
 
 
 # Application definition
