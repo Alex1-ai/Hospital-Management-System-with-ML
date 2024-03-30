@@ -22,17 +22,14 @@ load_dotenv()
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET = os.environ.get('SECRET_KEY')
-if SECRET :
-    SECRET_KEY=SECRET
-else:
-    SECRET_KEY="rbeobbbn$^j-jkzb4h)tl1v_xaw"
+SECRET_KEY = os.environ.get('SECRET_KEY', "input-your-secret-key-here")
+
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*",'localhost', '127.0.0.1', '[::1]', "hospital-system-70ox.onrender.com"]
+ALLOWED_HOSTS = ["*",'localhost', '127.0.0.1', "render.com"]
 
 
 # Application definition
@@ -53,7 +50,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    # "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -67,7 +64,7 @@ ROOT_URLCONF = 'HospitalManagementSystem.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,7 +131,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Optional: Whitenoise configuration for serving gzip-compressed files
 WHITENOISE_USE_FINDERS = True  # If you're using Django's staticfiles finders
